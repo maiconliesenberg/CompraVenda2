@@ -1,0 +1,26 @@
+﻿@model CompraVenda.ViewModels.VendaIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vendas</h2>
+
+@if (@Model.Venda.Count > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Customer</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var venda in Model.Venda)
+            {
+                <tr><td>@Html.ActionLink(@venda.Name, "Detalhes", new { venda.Id })</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não tem vendas ainda!</p>
+}

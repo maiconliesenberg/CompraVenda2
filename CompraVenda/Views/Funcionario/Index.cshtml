@@ -1,0 +1,26 @@
+﻿@model CompraVenda.ViewModels.FuncionarioIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Funcionarios</h2>
+
+@if (@Model.Funcionario.Count > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Clientes</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model.Funcionario)
+            {
+                <tr><td>@Html.ActionLink(@funcionario.Name, "Detalhes", new { funcionario.Id })</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não tem funcionario ainda!</p>
+}
