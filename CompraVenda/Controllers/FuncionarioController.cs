@@ -13,8 +13,8 @@ namespace CompraVenda.Controllers
         // GET: Funcionario
         public List<Funcionario> Funcionarios = new List<Funcionario>
         {
-            new Funcionario {Name = "Alfredo", Id = 1},
-            new Funcionario {Name = "Miranda", Id = 2}
+            new Funcionario {Name = "Alfredo", Id = 1, Cargo = "Analista"},
+            new Funcionario {Name = "Miranda", Id = 2, Cargo = "Fisioterapeuta"}
         };
 
         public ActionResult Index()

@@ -24,7 +24,7 @@ namespace CompraVenda
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-cyborg.css",
+                      "~/Content/United.css",
                       "~/Content/site.css"));
         }
     }
