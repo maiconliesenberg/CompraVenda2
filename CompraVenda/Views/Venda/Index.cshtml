@@ -10,12 +10,15 @@
 {
     <table class="table table-bordered table-hover">
         <thead>
-            <tr><th>Customer</th></tr>
+            <tr><th>Id</th><th>Produto</th><th>Funcionario</th><th>Cliente</th></tr>
         </thead>
         <tbody>
             @foreach (var venda in Model.Venda)
             {
-                <tr><td>@Html.ActionLink(@venda.Name, "Detalhes", new { venda.Id })</td></tr>
+                <tr>
+                    <td>@venda.Id</td>
+                    <td>@Html.ActionLink(@venda.Name, "Detalhes", new { venda.Id })</td>
+                </tr>
             }
         </tbody>
     </table>

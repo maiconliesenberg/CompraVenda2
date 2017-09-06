@@ -14,8 +14,8 @@ namespace CompraVenda.Controllers
 
         public List<Cliente> Clientes = new List<Cliente>
         {
-            new Cliente {Name = "Maicon", Id = 1},
-            new Cliente {Name = "Liesenberg", Id = 2}
+            new Cliente {Name = "Alberth", Id = 1},
+            new Cliente {Name = "Alberta", Id = 2}
         };
 
         public ActionResult Index()

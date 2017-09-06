@@ -20,6 +20,11 @@ namespace CompraVenda.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Produto> Produto { get; set; }
+        public DbSet<Venda> Venda { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

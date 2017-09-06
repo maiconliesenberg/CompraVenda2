@@ -11,10 +11,11 @@ namespace CompraVenda.Controllers
     public class VendaController : Controller
     {
         // GET: Venda
+
         public List<Venda> Vendas = new List<Venda>
         {
-            new Venda {Name = "Relogio", Id = 1},
-            new Venda {Name = "Ampulheta", Id = 2}
+            new Venda {Id = 1,Name = "Relogio"},
+            new Venda { Id = 2, Name = "Ampulheta"}
         };
 
         public ActionResult Index()
