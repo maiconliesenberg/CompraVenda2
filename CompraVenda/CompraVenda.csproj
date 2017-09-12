@@ -209,12 +209,21 @@
     <Compile Include="Migrations\201709060049304_InitialModel.Designer.cs">
       <DependentUpon>201709060049304_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709122225590_AddIsSub.cs" />
+    <Compile Include="Migrations\201709122225590_AddIsSub.Designer.cs">
+      <DependentUpon>201709122225590_AddIsSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709122237055_AddTipoMembro.cs" />
+    <Compile Include="Migrations\201709122237055_AddTipoMembro.Designer.cs">
+      <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TipoMembro.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,6 +320,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709060049304_InitialModel.resx">
       <DependentUpon>201709060049304_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709122225590_AddIsSub.resx">
+      <DependentUpon>201709122225590_AddIsSub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709122237055_AddTipoMembro.resx">
+      <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
