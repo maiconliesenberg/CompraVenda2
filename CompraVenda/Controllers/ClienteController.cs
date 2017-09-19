@@ -30,6 +30,7 @@ namespace CompraVenda.Controllers
 
         public ActionResult Detalhes(int id)
         {
+            //var cliente = GetCliente().SingleOrDefault(c => c.Id == id);
             if (Clientes.Count < id)
             {
                 return HttpNotFound();
