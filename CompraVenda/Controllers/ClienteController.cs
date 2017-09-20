@@ -12,20 +12,35 @@ namespace CompraVenda.Controllers
     {
         // GET: Cliente
 
+        private ApplicationDbContext _context;
+
+        public ClienteController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         public List<Cliente> Clientes = new List<Cliente>
         {
             new Cliente {Name = "Alberth", Id = 1},
             new Cliente {Name = "Alberta", Id = 2}
         };
 
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         public ActionResult Index()
         {
+            /*
             var viewModel = new ClienteIndexViewModel
             {
                 Cliente = Clientes
             };
-
-            return View(viewModel);
+            */
+            var cliente = _context.Cliente.ToList();
+            return View(cliente);
+            //return View(viewModel);
         }
 
         public ActionResult Detalhes(int id)

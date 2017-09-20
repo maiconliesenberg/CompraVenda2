@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201709122237055_AddTipoMembro.Designer.cs">
       <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709200039439_Clientes.cs" />
+    <Compile Include="Migrations\201709200039439_Clientes.Designer.cs">
+      <DependentUpon>201709200039439_Clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709122237055_AddTipoMembro.resx">
       <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709200039439_Clientes.resx">
+      <DependentUpon>201709200039439_Clientes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
