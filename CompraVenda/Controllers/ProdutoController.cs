@@ -5,38 +5,44 @@ using System.Web;
 using System.Web.Mvc;
 using CompraVenda.Models;
 using CompraVenda.ViewModels;
+using System.Data.Entity;
 
 namespace CompraVenda.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Produto
-        public List<Produto> Produtos = new List<Produto>
+        private ApplicationDbContext _context;
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        public ProdutoController()
         {
-            new Produto {Name = "Relogio", Id = 1},
-            new Produto {Name = "Ampulheta", Id = 2}
-        };
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         public ActionResult Index()
         {
-            var viewModel = new ProdutoIndexViewModel
-            {
-                Produto = Produtos
-            };
+            var produto = _context.Produto.ToList();
+            return View(produto);
+            //_context.Alunos.ToList();
 
-            return View(viewModel);
+            // var asd = alunos.SingleOrDefault(c => c.Id == alunos);
         }
 
         public ActionResult Detalhes(int id)
         {
-            if (Produtos.Count < id)
+            var produtos = db.Produto.Include(c => c.Id).SingleOrDefault(c => c.Id == id);
+
+            if (produtos == null)
             {
                 return HttpNotFound();
             }
 
-            var produto = Produtos[id - 1];
-
-            return View(produto);
+            return View(produtos);
         }
     }
 }
