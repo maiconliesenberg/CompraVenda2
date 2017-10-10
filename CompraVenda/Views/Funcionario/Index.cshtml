@@ -1,4 +1,4 @@
-﻿@model CompraVenda.ViewModels.FuncionarioIndexViewModel
+﻿@model IEnumerable<CompraVenda.Models.Funcionario>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,14 +6,17 @@
 
 <h2>Funcionarios</h2>
 
-@if (@Model.Funcionario.Count > 0)
+@if (@Model.Count() > 0)
 {
     <table class="table table-bordered table-hover">
         <thead>
-            <tr><th>Id</th><th>Clientes</th><th>Cargo</th></tr>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+            </tr>
         </thead>
         <tbody>
-            @foreach (var funcionario in Model.Funcionario)
+            @foreach (var funcionario in Model)
             {
                 <tr>
                     <td>@funcionario.Id</td>
@@ -25,5 +28,5 @@
 }
 else
 {
-    <p>Não tem funcionario ainda!</p>
+    <p>Não tem cliente ainda!</p>
 }

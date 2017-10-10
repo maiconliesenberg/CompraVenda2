@@ -13,8 +13,6 @@ namespace CompraVenda.Controllers
     {
         private ApplicationDbContext _context;
 
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         public ProdutoController()
         {
             _context = new ApplicationDbContext();
@@ -35,7 +33,8 @@ namespace CompraVenda.Controllers
 
         public ActionResult Detalhes(int id)
         {
-            var produtos = db.Produto.Include(c => c.Id).SingleOrDefault(c => c.Id == id);
+            var produtos = _context.Produto.SingleOrDefault(m => m.Id == id);
+            //var produtos = db.Produto.Include(c => c.Id).SingleOrDefault(c => c.Id == id);
 
             if (produtos == null)
             {

@@ -10,31 +10,33 @@ namespace CompraVenda.Controllers
 {
     public class FuncionarioController : Controller
     {
-        // GET: Funcionario
-        public List<Funcionario> Funcionarios = new List<Funcionario>
-        { 
-            new Funcionario {Id = 1, Name = "Alfredo"},
-            new Funcionario {Id = 2,Name = "Miranda"}
-        };
+        private ApplicationDbContext _context;
+
+        public FuncionarioController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         public ActionResult Index()
         {
-            var viewModel = new FuncionarioIndexViewModel
-            {
-                Funcionario = Funcionarios
-            };
-
-            return View(viewModel);
+            var funcionario = _context.Funcionario.ToList();
+            return View(funcionario);
         }
 
         public ActionResult Detalhes(int id)
         {
-            if (Funcionarios.Count < id)
+            var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);
+            //var cliente = _context.Cliente.Include(c => c.Id).SingleOrDefault(c => c.Id == id);
+
+            if (funcionario == null)
             {
                 return HttpNotFound();
             }
-
-            var funcionario = Funcionarios[id - 1];
 
             return View(funcionario);
         }

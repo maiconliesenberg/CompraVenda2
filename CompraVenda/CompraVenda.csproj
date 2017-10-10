@@ -205,21 +205,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709060049304_InitialModel.cs" />
-    <Compile Include="Migrations\201709060049304_InitialModel.Designer.cs">
-      <DependentUpon>201709060049304_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709122225590_AddIsSub.cs" />
-    <Compile Include="Migrations\201709122225590_AddIsSub.Designer.cs">
-      <DependentUpon>201709122225590_AddIsSub.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709122237055_AddTipoMembro.cs" />
-    <Compile Include="Migrations\201709122237055_AddTipoMembro.Designer.cs">
-      <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709200039439_Clientes.cs" />
-    <Compile Include="Migrations\201709200039439_Clientes.Designer.cs">
-      <DependentUpon>201709200039439_Clientes.cs</DependentUpon>
+    <Compile Include="Migrations\201710101946309_InitialCreate.cs" />
+    <Compile Include="Migrations\201710101946309_InitialCreate.Designer.cs">
+      <DependentUpon>201710101946309_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,6 +220,7 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ClienteFormViewModel.cs" />
     <Compile Include="ViewModels\ClienteIndexViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioIndexViewModel.cs" />
     <Compile Include="ViewModels\ProdutoIndexViewModel.cs" />
@@ -309,6 +298,7 @@
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\Detalhes.cshtml" />
+    <Content Include="Views\Cliente\ClienteForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,17 +312,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709060049304_InitialModel.resx">
-      <DependentUpon>201709060049304_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709122225590_AddIsSub.resx">
-      <DependentUpon>201709122225590_AddIsSub.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709122237055_AddTipoMembro.resx">
-      <DependentUpon>201709122237055_AddTipoMembro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709200039439_Clientes.resx">
-      <DependentUpon>201709200039439_Clientes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710101946309_InitialCreate.resx">
+      <DependentUpon>201710101946309_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

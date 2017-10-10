@@ -1,0 +1,21 @@
+﻿@model CompraVenda.ViewModels.ClienteFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Cliente"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cliente.Name)
+        @Html.TextBoxFor(m => m.Cliente.Name, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Cliente.IsSub) Assinar a NewsLetter
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

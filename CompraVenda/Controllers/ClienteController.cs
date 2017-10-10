@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CompraVenda.Models;
 using CompraVenda.ViewModels;
+using System.Data.Entity;
 
 namespace CompraVenda.Controllers
 {
@@ -19,12 +20,6 @@ namespace CompraVenda.Controllers
             _context = new ApplicationDbContext();
         }
 
-        public List<Cliente> Clientes = new List<Cliente>
-        {
-            new Cliente {Name = "Alberth", Id = 1},
-            new Cliente {Name = "Alberta", Id = 2}
-        };
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
@@ -32,28 +27,56 @@ namespace CompraVenda.Controllers
 
         public ActionResult Index()
         {
-            /*
-            var viewModel = new ClienteIndexViewModel
-            {
-                Cliente = Clientes
-            };
-            */
             var cliente = _context.Cliente.ToList();
             return View(cliente);
-            //return View(viewModel);
         }
 
         public ActionResult Detalhes(int id)
         {
-            //var cliente = GetCliente().SingleOrDefault(c => c.Id == id);
-            if (Clientes.Count < id)
+            var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);
+            //var cliente = _context.Cliente.Include(c => c.Id).SingleOrDefault(c => c.Id == id);
+
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
 
-            var cliente = Clientes[id - 1];
-
             return View(cliente);
+        }
+
+        public ActionResult New()
+        {
+            var viewModel = new ClienteFormViewModel
+            {
+            };
+
+            return View("ClienteForm", viewModel);
+        }
+
+        [HttpPost] // só será acessada com POST
+        public ActionResult Save(Cliente cliente) // recebemos um cliente
+        {
+            // armazena o cliente em memória
+            _context.Cliente.Add(cliente);
+            // faz a persistência
+            _context.SaveChanges();
+            // Voltamos para a lista de clientes
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);
+
+            if (cliente == null)
+                return HttpNotFound();
+
+            var viewModel = new ClienteFormViewModel
+            {
+                Cliente = cliente
+            };
+
+            return View("ClienteForm", viewModel);
         }
     }
 }
