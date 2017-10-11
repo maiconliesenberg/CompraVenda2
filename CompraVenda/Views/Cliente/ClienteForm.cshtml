@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("Save", "Cliente"))
 {
+    @Html.HiddenFor(m => m.Cliente.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Cliente.Name)
         @Html.TextBoxFor(m => m.Cliente.Name, new { @class = "form-control" })

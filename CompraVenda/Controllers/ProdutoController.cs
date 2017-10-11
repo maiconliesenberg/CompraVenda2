@@ -43,5 +43,48 @@ namespace CompraVenda.Controllers
 
             return View(produtos);
         }
+
+        public ActionResult New()
+        {
+            var viewModel = new ProdutoFormViewModel { };
+
+            return View("ProdutoForm", viewModel);
+        }
+
+        [HttpPost] // só será acessada com POST
+        public ActionResult Save(Produto produto) // recebemos um cliente
+        {
+            if (produto.Id == 0)
+            {
+                // armazena o cliente em memória
+                _context.Produto.Add(produto);
+            }
+            else
+            {
+                var produtoInDb = _context.Produto.Single(c => c.Id == produto.Id);
+
+                produtoInDb.Name = produto.Name;
+                
+            }
+            // faz a persistência
+            _context.SaveChanges();
+            // Voltamos para a lista de clientes
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var produto = _context.Produto.SingleOrDefault(c => c.Id == id);
+
+            if (produto == null)
+                return HttpNotFound();
+
+            var viewModel = new ProdutoFormViewModel
+            {
+                Produto = produto
+            };
+
+            return View("ProdutoForm", viewModel);
+        }
     }
 }

@@ -3,7 +3,7 @@ namespace CompraVenda.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialModel : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,21 @@ namespace CompraVenda.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        IsSub = c.Boolean(nullable: false),
+                        tipoMembro_Id = c.Byte(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.TipoMembroes", t => t.tipoMembro_Id)
+                .Index(t => t.tipoMembro_Id);
+            
+            CreateTable(
+                "dbo.TipoMembroes",
+                c => new
+                    {
+                        Id = c.Byte(nullable: false),
+                        SingUpFee = c.Short(nullable: false),
+                        DurationInMonths = c.Byte(nullable: false),
+                        DiscountRate = c.Byte(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -119,12 +134,14 @@ namespace CompraVenda.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Clientes", "tipoMembro_Id", "dbo.TipoMembroes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Clientes", new[] { "tipoMembro_Id" });
             DropTable("dbo.Vendas");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -133,6 +150,7 @@ namespace CompraVenda.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Produtoes");
             DropTable("dbo.Funcionarios");
+            DropTable("dbo.TipoMembroes");
             DropTable("dbo.Clientes");
         }
     }

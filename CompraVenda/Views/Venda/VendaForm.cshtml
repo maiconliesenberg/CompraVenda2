@@ -1,0 +1,34 @@
+﻿@model CompraVenda.ViewModels.VendaFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Venda"))
+{
+    @Html.HiddenFor(m => m.Venda.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venda.Name)
+        @Html.TextBoxFor(m => m.Venda.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venda.Funcionario)
+        @Html.DropDownListFor(m => m.Venda.Funcionario,
+            new SelectList(Model.Funcionario, "Id", "Name"),
+            "Escolha", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venda.cliente)
+        @Html.DropDownListFor(m => m.Venda.cliente,
+            new SelectList(Model.Cliente, "Id", "Name"),
+            "Escolha", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venda.Produto)
+        @Html.DropDownListFor(m => m.Venda.Produto,
+            new SelectList(Model.Produto, "Id", "Name"),
+            "Escolha", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

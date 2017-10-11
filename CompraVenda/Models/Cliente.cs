@@ -15,7 +15,6 @@ namespace CompraVenda.Models
         [Display(Name = "Nome")]
         public string Name { get; set; }
         public Boolean IsSub { get; set;}
-        public TipoMembro tipoMembro { get; set; }
         //public int tipo { get; set; }
     }
 }

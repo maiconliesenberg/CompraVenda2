@@ -9,6 +9,9 @@ namespace CompraVenda.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-       
+        public Cliente cliente { get; set; }
+        public Produto Produto { get; set; }
+        public Funcionario Funcionario { get; set; }
+
     }
 }

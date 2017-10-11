@@ -1,0 +1,17 @@
+﻿@model CompraVenda.ViewModels.ProdutoFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Produto"))
+{
+    @Html.HiddenFor(m => m.Produto.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Produto)
+        @Html.TextBoxFor(m => m.Produto.Name, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

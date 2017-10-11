@@ -40,5 +40,47 @@ namespace CompraVenda.Controllers
 
             return View(funcionario);
         }
+
+        public ActionResult New()
+        {
+            var viewModel = new FuncionarioFormViewModel { };
+
+            return View("FuncionarioForm", viewModel);
+        }
+
+        [HttpPost] // só será acessada com POST
+        public ActionResult Save(Funcionario funcionario) // recebemos um cliente
+        {
+            if (funcionario.Id == 0)
+            {
+                // armazena o cliente em memória
+                _context.Funcionario.Add(funcionario);
+            }
+            else
+            {
+                var funcionarioInDb = _context.Funcionario.Single(c => c.Id == funcionario.Id);
+
+                funcionarioInDb.Name = funcionario.Name;
+            }
+            // faz a persistência
+            _context.SaveChanges();
+            // Voltamos para a lista de clientes
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);
+
+            if (funcionario == null)
+                return HttpNotFound();
+
+            var viewModel = new FuncionarioFormViewModel
+            {
+                Funcionario = funcionario
+            };
+
+            return View("FuncionarioForm", viewModel);
+        }
     }
 }

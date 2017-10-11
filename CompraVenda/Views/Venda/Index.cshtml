@@ -6,28 +6,36 @@
 
 <h2>Vendas</h2>
 
-@if (@Model.Count() > 0)
+@if (!Model.Any())
 {
+    <p>Não temos vendas ainda.</p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Nova venda", "New", null, new { @class = "btn btn-primary" })
+    </p>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nome Produto</th>
+                <th>Nome</th>
+                <th>Funcionario</th>
+                <th>Cliente</th>
+                <th>Produto</th>
             </tr>
-        </thead>s
+        </thead>
         <tbody>
             @foreach (var venda in Model)
             {
                 <tr>
                     <td>@venda.Id</td>
-                    <td>@Html.ActionLink(@venda.Name, "Detalhes", new { venda.Id })</td>
+                    <td>@Html.ActionLink(@venda.Name, "Edit", new { venda.Id })</td>
+                    <td>@venda.Funcionario.Name</td>
+                    <td>@venda.cliente.Name</td>
+                    <td>@venda.Produto.Name</td>
                 </tr>
             }
         </tbody>
     </table>
 }
-else
-{
-    <p>Não tem produtos ainda!</p>
-}
-

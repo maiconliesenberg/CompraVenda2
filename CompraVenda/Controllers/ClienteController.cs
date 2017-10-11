@@ -46,9 +46,7 @@ namespace CompraVenda.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new ClienteFormViewModel
-            {
-            };
+            var viewModel = new ClienteFormViewModel{};
 
             return View("ClienteForm", viewModel);
         }
@@ -56,8 +54,18 @@ namespace CompraVenda.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Cliente cliente) // recebemos um cliente
         {
-            // armazena o cliente em memória
-            _context.Cliente.Add(cliente);
+            if (cliente.Id == 0)
+            {
+                // armazena o cliente em memória
+                _context.Cliente.Add(cliente);
+            }
+            else
+            {
+                var clienteInDb = _context.Cliente.Single(c => c.Id == cliente.Id);
+
+                clienteInDb.Name = cliente.Name;
+                clienteInDb.IsSub = cliente.IsSub;
+            }
             // faz a persistência
             _context.SaveChanges();
             // Voltamos para a lista de clientes

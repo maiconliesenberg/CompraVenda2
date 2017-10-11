@@ -205,9 +205,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710101946309_InitialCreate.cs" />
-    <Compile Include="Migrations\201710101946309_InitialCreate.Designer.cs">
-      <DependentUpon>201710101946309_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201710100028260_InitialCreate.cs" />
+    <Compile Include="Migrations\201710100028260_InitialCreate.Designer.cs">
+      <DependentUpon>201710100028260_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710102358322_atualizar.cs" />
+    <Compile Include="Migrations\201710102358322_atualizar.Designer.cs">
+      <DependentUpon>201710102358322_atualizar.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -222,8 +226,11 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ClienteFormViewModel.cs" />
     <Compile Include="ViewModels\ClienteIndexViewModel.cs" />
+    <Compile Include="ViewModels\FuncionarioFormIndexViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioIndexViewModel.cs" />
+    <Compile Include="ViewModels\ProdutoFormViewModel.cs" />
     <Compile Include="ViewModels\ProdutoIndexViewModel.cs" />
+    <Compile Include="ViewModels\VendaFormViewModel.cs" />
     <Compile Include="ViewModels\VendaIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +306,9 @@
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\Detalhes.cshtml" />
     <Content Include="Views\Cliente\ClienteForm.cshtml" />
+    <Content Include="Views\Produto\ProdutoForm.cshtml" />
+    <Content Include="Views\Funcionario\FuncionarioForm.cshtml" />
+    <Content Include="Views\Venda\VendaForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,8 +322,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710101946309_InitialCreate.resx">
-      <DependentUpon>201710101946309_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710100028260_InitialCreate.resx">
+      <DependentUpon>201710100028260_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710102358322_atualizar.resx">
+      <DependentUpon>201710102358322_atualizar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
