@@ -7,13 +7,13 @@ namespace CompraVenda.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class asda : IMigrationMetadata
+    public sealed partial class migrationInicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(asda));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migrationInicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710172313159_asda"; }
+            get { return "201710312253120_migrationInicial"; }
         }
         
         string IMigrationMetadata.Source

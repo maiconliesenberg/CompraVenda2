@@ -5,12 +5,12 @@
 }
 
 <h2>Funcionarios</h2>
-
+<p>
+    @Html.ActionLink("Novo Funcionario", "New", null, new { @class = "btn btn-primary" })
+</p>
 @if (@Model.Count() > 0)
 {
-    <p>
-        @Html.ActionLink("Novo Funcionario", "New", null, new { @class = "btn btn-primary" })
-    </p>
+    
     <table class="table table-bordered table-hover">
         <thead>
             <tr>

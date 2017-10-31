@@ -11,11 +11,11 @@ namespace CompraVenda.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte ClienteId { get; set; }
+        public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
-        public byte ProdutoId { get; set; }
+        public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
-        public byte FuncionarioId { get; set; }
+        public int FuncionarioId { get; set; }
         public Funcionario Funcionario { get; set; }
 
     }

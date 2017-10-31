@@ -10,7 +10,6 @@ namespace CompraVenda.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "CompraVenda.Models.ApplicationDbContext";
         }
 
         protected override void Seed(CompraVenda.Models.ApplicationDbContext context)

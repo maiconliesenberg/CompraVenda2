@@ -71,8 +71,8 @@ namespace CompraVenda.Controllers
 
                 customerInDb.Name = venda.Name;
                 customerInDb.ClienteId = venda.ClienteId;
-                customerInDb.Produto = venda.Produto;
-                customerInDb.Funcionario = venda.Funcionario;
+                customerInDb.ProdutoId = venda.ProdutoId;
+                customerInDb.FuncionarioId = venda.FuncionarioId;
             }
 
             // faz a persistência

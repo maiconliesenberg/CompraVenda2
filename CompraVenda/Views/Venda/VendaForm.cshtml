@@ -13,10 +13,11 @@
         @Html.TextBoxFor(m => m.Venda.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Venda.Funcionario)
-        @Html.DropDownListFor(m => m.Venda.Funcionario,
+        @Html.LabelFor(m => m.Venda.FuncionarioId)
+        @Html.DropDownListFor(m => m.Venda.FuncionarioId,
             new SelectList(Model.Funcionario, "Id", "Name"),
             "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Venda.FuncionarioId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Venda.ClienteId)
@@ -26,10 +27,11 @@
         @Html.ValidationMessageFor(m => m.Venda.ClienteId)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Venda.Produto)
-        @Html.DropDownListFor(m => m.Venda.Produto,
+        @Html.LabelFor(m => m.Venda.ProdutoId)
+        @Html.DropDownListFor(m => m.Venda.ProdutoId,
             new SelectList(Model.Produto, "Id", "Name"),
             "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Venda.ProdutoId)
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 }

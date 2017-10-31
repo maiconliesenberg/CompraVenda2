@@ -5,16 +5,16 @@
 }
 
 <h2>Vendas</h2>
-
+<p>
+    @Html.ActionLink("Nova venda", "New", null, new { @class = "btn btn-primary" })
+</p>
 @if (!Model.Any())
 {
     <p>Não temos vendas ainda.</p>
 }
 else
 { 
-    <p>
-        @Html.ActionLink("Nova venda", "New", null, new { @class = "btn btn-primary" })
-    </p>
+   
     <table class="table table-bordered table-hover">
         <thead>
             <tr>

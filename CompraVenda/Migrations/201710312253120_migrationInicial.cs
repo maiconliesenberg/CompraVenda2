@@ -3,7 +3,7 @@ namespace CompraVenda.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class migrationInicial : DbMigration
     {
         public override void Up()
         {
@@ -14,20 +14,6 @@ namespace CompraVenda.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         IsSub = c.Boolean(nullable: false),
-                        tipoMembro_Id = c.Byte(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.TipoMembroes", t => t.tipoMembro_Id)
-                .Index(t => t.tipoMembro_Id);
-            
-            CreateTable(
-                "dbo.TipoMembroes",
-                c => new
-                    {
-                        Id = c.Byte(nullable: false),
-                        SingUpFee = c.Short(nullable: false),
-                        DurationInMonths = c.Byte(nullable: false),
-                        DiscountRate = c.Byte(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -123,25 +109,38 @@ namespace CompraVenda.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        ClienteId = c.Int(nullable: false),
+                        ProdutoId = c.Int(nullable: false),
+                        FuncionarioId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Clientes", t => t.ClienteId, cascadeDelete: true)
+                .ForeignKey("dbo.Funcionarios", t => t.FuncionarioId, cascadeDelete: true)
+                .ForeignKey("dbo.Produtoes", t => t.ProdutoId, cascadeDelete: true)
+                .Index(t => t.ClienteId)
+                .Index(t => t.ProdutoId)
+                .Index(t => t.FuncionarioId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Vendas", "ProdutoId", "dbo.Produtoes");
+            DropForeignKey("dbo.Vendas", "FuncionarioId", "dbo.Funcionarios");
+            DropForeignKey("dbo.Vendas", "ClienteId", "dbo.Clientes");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Clientes", "tipoMembro_Id", "dbo.TipoMembroes");
+            DropIndex("dbo.Vendas", new[] { "FuncionarioId" });
+            DropIndex("dbo.Vendas", new[] { "ProdutoId" });
+            DropIndex("dbo.Vendas", new[] { "ClienteId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Clientes", new[] { "tipoMembro_Id" });
             DropTable("dbo.Vendas");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
@@ -150,7 +149,6 @@ namespace CompraVenda.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Produtoes");
             DropTable("dbo.Funcionarios");
-            DropTable("dbo.TipoMembroes");
             DropTable("dbo.Clientes");
         }
     }
