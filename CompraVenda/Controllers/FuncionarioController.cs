@@ -51,6 +51,16 @@ namespace CompraVenda.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Funcionario funcionario) // recebemos um cliente
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new FuncionarioFormViewModel
+                {
+                    Funcionario = funcionario
+                };
+
+                return View("FuncionarioForm", viewModel);
+            }
+
             if (funcionario.Id == 0)
             {
                 // armazena o cliente em memória

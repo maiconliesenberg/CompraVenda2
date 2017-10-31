@@ -209,6 +209,14 @@
     <Compile Include="Migrations\201710312253120_migrationInicial.Designer.cs">
       <DependentUpon>201710312253120_migrationInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710312327059_validacao.cs" />
+    <Compile Include="Migrations\201710312327059_validacao.Designer.cs">
+      <DependentUpon>201710312327059_validacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710312335162_validacaonosmodels.cs" />
+    <Compile Include="Migrations\201710312335162_validacaonosmodels.Designer.cs">
+      <DependentUpon>201710312335162_validacaonosmodels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -320,6 +328,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710312253120_migrationInicial.resx">
       <DependentUpon>201710312253120_migrationInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312327059_validacao.resx">
+      <DependentUpon>201710312327059_validacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312335162_validacaonosmodels.resx">
+      <DependentUpon>201710312335162_validacaonosmodels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

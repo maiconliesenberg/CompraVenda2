@@ -54,6 +54,16 @@ namespace CompraVenda.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Cliente cliente) // recebemos um cliente
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ClienteFormViewModel
+                {
+                    Cliente = cliente
+                };
+
+                return View("ClienteForm", viewModel);
+            }
+
             if (cliente.Id == 0)
             {
                 // armazena o cliente em memória

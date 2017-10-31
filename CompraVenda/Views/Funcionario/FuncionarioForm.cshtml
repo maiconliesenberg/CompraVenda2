@@ -11,6 +11,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Funcionario.Name)
         @Html.TextBoxFor(m => m.Funcionario.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Funcionario.Name)
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>

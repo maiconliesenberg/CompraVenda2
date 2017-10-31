@@ -11,6 +11,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Cliente.Name)
         @Html.TextBoxFor(m => m.Cliente.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cliente.Name)
     </div>
     <div class="checkbox">
         <label>

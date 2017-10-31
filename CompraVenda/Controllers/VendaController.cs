@@ -57,9 +57,22 @@ namespace CompraVenda.Controllers
             return View("VendaForm", viewModel);
         }
 
-        [HttpPost] // só será acessada com POST
+        [HttpPost] // só será acessada com 
         public ActionResult Save(Venda venda) // recebemos um cliente
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new VendaFormViewModel
+                {
+                    Venda = venda,
+                    Cliente = _context.Cliente.ToList(),
+                    Produto = _context.Produto.ToList(),
+                    Funcionario = _context.Funcionario.ToList()                    
+                };
+
+                return View("VendaForm", viewModel);
+            }
+
             if (venda.Id == 0)
             {
                 // armazena o cliente em memória
