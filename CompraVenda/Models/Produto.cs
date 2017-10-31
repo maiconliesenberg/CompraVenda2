@@ -9,9 +9,6 @@ namespace CompraVenda.Models
     public class Produto
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(255)]
-        [Display(Name = "Nome")]
         public string Name { get; set; }
     }
 }

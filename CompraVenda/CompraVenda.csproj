@@ -213,6 +213,26 @@
     <Compile Include="Migrations\201710102358322_atualizar.Designer.cs">
       <DependentUpon>201710102358322_atualizar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710172104166_updatetudo.cs" />
+    <Compile Include="Migrations\201710172104166_updatetudo.Designer.cs">
+      <DependentUpon>201710172104166_updatetudo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172152568_asopj.cs" />
+    <Compile Include="Migrations\201710172152568_asopj.Designer.cs">
+      <DependentUpon>201710172152568_asopj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172306082_asdasa.cs" />
+    <Compile Include="Migrations\201710172306082_asdasa.Designer.cs">
+      <DependentUpon>201710172306082_asdasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172313159_asda.cs" />
+    <Compile Include="Migrations\201710172313159_asda.Designer.cs">
+      <DependentUpon>201710172313159_asda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710312118499_tes.cs" />
+    <Compile Include="Migrations\201710312118499_tes.Designer.cs">
+      <DependentUpon>201710312118499_tes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -327,6 +347,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710102358322_atualizar.resx">
       <DependentUpon>201710102358322_atualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172104166_updatetudo.resx">
+      <DependentUpon>201710172104166_updatetudo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172152568_asopj.resx">
+      <DependentUpon>201710172152568_asopj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172306082_asdasa.resx">
+      <DependentUpon>201710172306082_asdasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172313159_asda.resx">
+      <DependentUpon>201710172313159_asda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710312118499_tes.resx">
+      <DependentUpon>201710312118499_tes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

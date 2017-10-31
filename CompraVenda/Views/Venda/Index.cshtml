@@ -11,7 +11,7 @@
     <p>Não temos vendas ainda.</p>
 }
 else
-{
+{ 
     <p>
         @Html.ActionLink("Nova venda", "New", null, new { @class = "btn btn-primary" })
     </p>
@@ -28,13 +28,23 @@ else
         <tbody>
             @foreach (var venda in Model)
             {
-                <tr>
-                    <td>@venda.Id</td>
-                    <td>@Html.ActionLink(@venda.Name, "Edit", new { venda.Id })</td>
-                    <td>@venda.Funcionario.Name</td>
-                    <td>@venda.cliente.Name</td>
-                    <td>@venda.Produto.Name</td>
-                </tr>
+                try
+                {
+                    <tr>
+                        <td>@venda.Id</td>
+                        <td>@Html.ActionLink(@venda.Name, "Edit", new { venda.Id })</td>
+                        <td>@venda.Funcionario.Name</td>
+                        <td>@venda.Cliente.Name</td>
+                        <td>@venda.Produto.Name</td>
+                    </tr>
+                }
+                catch(Exception e)
+                {
+
+                }
+
+
+
             }
         </tbody>
     </table>

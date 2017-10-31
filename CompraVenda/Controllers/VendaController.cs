@@ -25,14 +25,14 @@ namespace CompraVenda.Controllers
 
         public ActionResult Index()
         { 
-            var venda = _context.Venda.Include(c => c.Produto).Include(c => c.cliente).Include(c => c.Funcionario).ToList();
+            var venda = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).ToList();
             return View(venda);
         }
 
         public ActionResult Detalhes(int id)
         {
            // var produtos = _context.Venda.SingleOrDefault(m => m.Id == id);
-            var vendas = _context.Venda.Include(c => c.Produto).Include(c => c.cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == id);
+            var vendas = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == id);
 
             if (vendas == null)
             {
@@ -66,11 +66,11 @@ namespace CompraVenda.Controllers
                 _context.Venda.Add(venda);
             }
             else
-            {
-                var customerInDb = _context.Venda.Include(c => c.Produto).Include(c => c.cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == venda.Id);
+            { 
+                var customerInDb = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == venda.Id);
 
                 customerInDb.Name = venda.Name;
-                customerInDb.cliente = venda.cliente;
+                customerInDb.ClienteId = venda.ClienteId;
                 customerInDb.Produto = venda.Produto;
                 customerInDb.Funcionario = venda.Funcionario;
             }
@@ -83,7 +83,7 @@ namespace CompraVenda.Controllers
 
         public ActionResult Edit(int id)
         {
-            var venda = _context.Venda.Include(c => c.Produto).Include(c => c.cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == id);
+            var venda = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == id);
 
             if (venda == null)
                 return HttpNotFound();

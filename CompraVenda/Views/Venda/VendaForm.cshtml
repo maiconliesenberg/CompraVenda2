@@ -19,10 +19,11 @@
             "Escolha", new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Venda.cliente)
-        @Html.DropDownListFor(m => m.Venda.cliente,
+        @Html.LabelFor(m => m.Venda.ClienteId)
+        @Html.DropDownListFor(m => m.Venda.ClienteId,
             new SelectList(Model.Cliente, "Id", "Name"),
             "Escolha", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Venda.ClienteId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Venda.Produto)
