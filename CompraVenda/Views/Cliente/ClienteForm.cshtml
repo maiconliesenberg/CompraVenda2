@@ -7,6 +7,8 @@
 
 @using (Html.BeginForm("Save", "Cliente"))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please fix the following errors.")
     @Html.HiddenFor(m => m.Cliente.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Cliente.Name)
@@ -20,4 +22,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

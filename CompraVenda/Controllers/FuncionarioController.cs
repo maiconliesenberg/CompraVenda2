@@ -43,12 +43,15 @@ namespace CompraVenda.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new FuncionarioFormViewModel { };
+            var viewModel = new FuncionarioFormViewModel {
+                Funcionario = new Funcionario()
+            };
 
             return View("FuncionarioForm", viewModel);
         }
 
         [HttpPost] // só será acessada com POST
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Funcionario funcionario) // recebemos um cliente
         {
             if (!ModelState.IsValid)

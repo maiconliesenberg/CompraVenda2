@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("Save", "Funcionario"))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Funcionario.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Funcionario.Name)
@@ -15,4 +16,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
+}
+@section scripts
+ {
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -49,6 +49,7 @@ namespace CompraVenda.Controllers
             var funcionario = _context.Funcionario.ToList();
             var viewModel = new VendaFormViewModel
             {
+                Venda = new Venda(),
                 Cliente = cliente,
                 Produto = produto,
                 Funcionario = funcionario
@@ -58,6 +59,7 @@ namespace CompraVenda.Controllers
         }
 
         [HttpPost] // só será acessada com 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Venda venda) // recebemos um cliente
         {
             if (!ModelState.IsValid)

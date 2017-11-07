@@ -46,12 +46,16 @@ namespace CompraVenda.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new ClienteFormViewModel{};
+            var viewModel = new ClienteFormViewModel
+            {
+                Cliente = new Cliente()
+            };
 
             return View("ClienteForm", viewModel);
         }
 
         [HttpPost] // só será acessada com POST
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Cliente cliente) // recebemos um cliente
         {
             if (!ModelState.IsValid)
@@ -60,7 +64,7 @@ namespace CompraVenda.Controllers
                 {
                     Cliente = cliente
                 };
-
+                
                 return View("ClienteForm", viewModel);
             }
 
