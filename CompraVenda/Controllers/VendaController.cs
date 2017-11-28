@@ -22,13 +22,13 @@ namespace CompraVenda.Controllers
         {
             _context.Dispose();
         }
-
+        [Authorize]
         public ActionResult Index()
         { 
             var venda = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).ToList();
             return View(venda);
         }
-
+        [Authorize]
         public ActionResult Detalhes(int id)
         {
            // var produtos = _context.Venda.SingleOrDefault(m => m.Id == id);
@@ -41,7 +41,7 @@ namespace CompraVenda.Controllers
 
             return View(vendas);
         }
-
+        [Authorize]
         public ActionResult New()
         {
             var cliente = _context.Cliente.ToList();
@@ -57,7 +57,7 @@ namespace CompraVenda.Controllers
 
             return View("VendaForm", viewModel);
         }
-
+        [Authorize]
         [HttpPost] // só será acessada com 
         [ValidateAntiForgeryToken]
         public ActionResult Save(Venda venda) // recebemos um cliente
@@ -95,7 +95,7 @@ namespace CompraVenda.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var venda = _context.Venda.Include(c => c.Produto).Include(c => c.Cliente).Include(c => c.Funcionario).SingleOrDefault(c => c.Id == id);
@@ -114,6 +114,7 @@ namespace CompraVenda.Controllers
             return View("VendaForm", viewModel);
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var venda = _context.Venda.SingleOrDefault(c => c.Id == id);

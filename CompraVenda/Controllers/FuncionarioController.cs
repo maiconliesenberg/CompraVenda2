@@ -21,13 +21,15 @@ namespace CompraVenda.Controllers
         {
             _context.Dispose();
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         public ActionResult Index()
         {
             var funcionario = _context.Funcionario.ToList();
-            return View(funcionario);
+            if (User.IsInRole("CanManageCustomers"))
+                return View(funcionario);
+            return View("ReadOnlyIndex", funcionario);
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         public ActionResult Detalhes(int id)
         {
             var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);
@@ -40,7 +42,7 @@ namespace CompraVenda.Controllers
 
             return View(funcionario);
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         public ActionResult New()
         {
             var viewModel = new FuncionarioFormViewModel {
@@ -49,7 +51,7 @@ namespace CompraVenda.Controllers
 
             return View("FuncionarioForm", viewModel);
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
         public ActionResult Save(Funcionario funcionario) // recebemos um cliente
@@ -80,7 +82,7 @@ namespace CompraVenda.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         public ActionResult Edit(int id)
         {
             var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);
@@ -95,7 +97,7 @@ namespace CompraVenda.Controllers
 
             return View("FuncionarioForm", viewModel);
         }
-
+        [Authorize(Roles = "CanManageCustomers")]
         public ActionResult Delete(int id)
         {
             var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);

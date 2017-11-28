@@ -24,13 +24,14 @@ namespace CompraVenda.Controllers
         {
             _context.Dispose();
         }
-
+        [Authorize]
         public ActionResult Index()
         {
             var cliente = _context.Cliente.ToList();
+            
             return View(cliente);
         }
-
+        [Authorize]
         public ActionResult Detalhes(int id)
         {
             var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);
@@ -43,7 +44,7 @@ namespace CompraVenda.Controllers
 
             return View(cliente);
         }
-
+        [Authorize]
         public ActionResult New()
         {
             var viewModel = new ClienteFormViewModel
@@ -53,7 +54,7 @@ namespace CompraVenda.Controllers
 
             return View("ClienteForm", viewModel);
         }
-
+        [Authorize]
         [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
         public ActionResult Save(Cliente cliente) // recebemos um cliente
@@ -85,7 +86,7 @@ namespace CompraVenda.Controllers
             // Voltamos para a lista de clientes
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);
@@ -100,7 +101,7 @@ namespace CompraVenda.Controllers
 
             return View("ClienteForm", viewModel);
         }
-
+        [Authorize]
         public ActionResult Delete(int id)
          {
              var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);

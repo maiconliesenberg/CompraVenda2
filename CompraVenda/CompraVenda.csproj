@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -217,12 +218,25 @@
     <Compile Include="Migrations\201710312335162_validacaonosmodels.Designer.cs">
       <DependentUpon>201710312335162_validacaonosmodels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711282228408_createUsers.cs" />
+    <Compile Include="Migrations\201711282228408_createUsers.Designer.cs">
+      <DependentUpon>201711282228408_createUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282229569_createUserss.cs" />
+    <Compile Include="Migrations\201711282229569_createUserss.Designer.cs">
+      <DependentUpon>201711282229569_createUserss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282240045_createUsers2.cs" />
+    <Compile Include="Migrations\201711282240045_createUsers2.Designer.cs">
+      <DependentUpon>201711282240045_createUsers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\TipoMembro.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Venda.cs" />
@@ -327,6 +341,7 @@
     <Content Include="Views\Produto\ProdutoForm.cshtml" />
     <Content Include="Views\Funcionario\FuncionarioForm.cshtml" />
     <Content Include="Views\Venda\VendaForm.cshtml" />
+    <Content Include="Views\Funcionario\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +363,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710312335162_validacaonosmodels.resx">
       <DependentUpon>201710312335162_validacaonosmodels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282228408_createUsers.resx">
+      <DependentUpon>201711282228408_createUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282229569_createUserss.resx">
+      <DependentUpon>201711282229569_createUserss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282240045_createUsers2.resx">
+      <DependentUpon>201711282240045_createUsers2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
