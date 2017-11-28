@@ -21,7 +21,7 @@ namespace CompraVenda.Controllers
         {
             _context.Dispose();
         }
-        [Authorize(Roles = "CanManageCustomers")]
+        
         public ActionResult Index()
         {
             var funcionario = _context.Funcionario.ToList();
