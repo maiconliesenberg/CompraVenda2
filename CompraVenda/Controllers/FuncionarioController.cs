@@ -95,5 +95,18 @@ namespace CompraVenda.Controllers
 
             return View("FuncionarioForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var funcionario = _context.Funcionario.SingleOrDefault(c => c.Id == id);
+
+            if (funcionario == null)
+                return HttpNotFound();
+
+            _context.Funcionario.Remove(funcionario);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

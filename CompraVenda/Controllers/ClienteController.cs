@@ -100,5 +100,18 @@ namespace CompraVenda.Controllers
 
             return View("ClienteForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+         {
+             var cliente = _context.Cliente.SingleOrDefault(c => c.Id == id);
+ 
+             if (cliente == null)
+                 return HttpNotFound();
+ 
+             _context.Cliente.Remove(cliente);
+             _context.SaveChanges();
+ 
+             return RedirectToAction("Index");
+         }
     }
 }

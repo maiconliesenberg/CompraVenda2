@@ -11,12 +11,13 @@
 @if (@Model.Count() > 0)
 {
     
-    <table class="table table-bordered table-hover">
+    <table id="cliente" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Clientes</th>
                 <th>V.I.P</th>
+                <th>Remover</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
                     <td>@cliente.Id</td>
                     <td>@Html.ActionLink(@cliente.Name, "Edit", new { cliente.Id })</td>
                     <td>@cliente.IsSub</td>
+                    <td>
+                        <button data-customer-id="@cliente.Id" class="btn-link js-delete">Remover</button>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -34,4 +38,26 @@
 else
 {
     <p>Não tem cliente ainda!</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#cliente").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    var result = confirm("Tem certeza que quer remover este cliente?")
+                            if (result) {
+                                $.ajax({
+                                    url: "/cliente/delete/" + button.attr("data-customer-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                });
+        });
+    </script>
 }

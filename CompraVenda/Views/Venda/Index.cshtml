@@ -15,7 +15,7 @@
 else
 { 
    
-    <table class="table table-bordered table-hover">
+    <table id="venda" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,6 +23,7 @@ else
                 <th>Funcionario</th>
                 <th>Cliente</th>
                 <th>Produto</th>
+                <th>Remover</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,9 @@ else
                         <td>@venda.Funcionario.Name</td>
                         <td>@venda.Cliente.Name</td>
                         <td>@venda.Produto.Name</td>
+                        <td>
+                            <button data-customer-id="@venda.Id" class="btn-link js-delete">Remover</button>
+                        </td>
                     </tr>
                 }
                 catch(Exception e)
@@ -48,4 +52,26 @@ else
             }
         </tbody>
     </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#venda").on("click",".js-delete",
+                function () {
+                    var button = $(this);
+                    var result = confirm("Tem certeza que quer remover este venda?")
+                            if (result) {
+                                $.ajax({
+                                    url: "/venda/delete/" + button.attr("data-customer-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                });
+        });
+    </script>
 }

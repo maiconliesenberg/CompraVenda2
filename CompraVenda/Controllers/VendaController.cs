@@ -113,5 +113,18 @@ namespace CompraVenda.Controllers
 
             return View("VendaForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var venda = _context.Venda.SingleOrDefault(c => c.Id == id);
+
+            if (venda == null)
+                return HttpNotFound();
+
+            _context.Venda.Remove(venda);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
